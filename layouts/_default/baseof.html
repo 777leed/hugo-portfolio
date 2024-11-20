@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/output.css" />
+    <link rel="stylesheet" href="css/input.css" />
+    <title>Khalid Koukou's Portfolio</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+      integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="text-white w-full h-full relative bg-[#040707] p-4 uppercase font-[poppins] antialiased overflow-hidden"
+  >
+    <main class="w-full h-full">{{ block "main" . }}{{ end }}</main>
+    <script src="js/main.js"></script>
+    <script>
+      const data = {
+        labels: [
+          "Front-End Development",
+          "Back-End Development",
+          "Version Control",
+          "Database Management",
+          "UX/UI",
+        ],
+        // Example labels
+        datasets: [
+          {
+            label: "Technical Skills",
+            data: [99, 83, 91, 88, 97], // Skill levels
+            fill: true,
+            backgroundColor: "rgba(255, 255, 255, 0.2)", // Area behind the chart (e.g., skill levels)
+            borderColor: "#fff",
+            pointBackgroundColor: "#FFCD32",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "#FFCD32",
+          },
+        ],
+      };
+
+      const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            display: false,
+          },
+        },
+        scales: {
+          r: {
+            min: 0, // Minimum value (start at the center)
+            max: 100, // Maximum value (edge of the chart)
+            ticks: {
+              display: false,
+
+              stepSize: 20, // Ticks between min and max (adjust to make it more readable)
+            },
+            angleLines: {
+              display: true,
+              color: "#fff", // Change color of the lines
+            },
+            grid: {
+              color: "#fff", // Change the grid lines color
+            },
+          },
+        },
+      };
+
+      const config = {
+        type: "radar",
+        data: data,
+        options: options,
+      };
+
+      // Create the chart
+      const ctx = document.getElementById("skillsChart").getContext("2d");
+      const myChart = new Chart(ctx, config);
+    </script>
+  </body>
+</html>
